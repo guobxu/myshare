@@ -1,0 +1,61 @@
+
+server:
+    port: 6061
+    servlet:
+        context-path: /
+
+################### 数据库配置 ##########################
+spring:
+    datasource:
+        url: jdbc:mysql://127.0.0.1:3306/autodig?useUnicode=true&characterEncoding=UTF-8&useSSL=false&allowMultiQueries=true&serverTimezone=GMT%2B8
+        username: autodig
+        password: Abc123
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        type: com.zaxxer.hikari.HikariDataSource
+        hikari:
+            minimum-idle: 5
+            maximum-pool-size: 15
+            auto-commit: false
+            idle-timeout: 30000
+            pool-name: autodig-CP
+            max-lifetime: 1800000
+            connection-timeout: 30000
+            connection-test-query: SELECT 1
+
+################### 接口认证 ##########################
+auth:
+    systemID: JZKD
+    hashCode: 5b050f2ccbb3bd07d8a1392fd59f4d321e4f87cce3772cd3f5ebf0b6ebe15553 # 登录认证本地hash值
+    tokenExpire: 3600 # token过期时间(单位:秒)
+
+################### 任务执行线程 ##########################
+# 任务核心线程数
+task:
+    coreThreads: 10
+
+################### 命令配置 ##########################
+# 命令超时(单位: 秒)
+cmd:
+    timeout: 10
+    dig:                            ## dig命令选项(默认DNS ip: 183.221.253.100)，如果需要使用ipv6 DNS则设置为 -6 @ipv6
+        opts: '@183.221.253.100'
+    logger:                         ## logger命令选项(默认syslog服务器ip: 117.134.60.56)
+        opts: 221.226.240.42:1514
+
+################### 节点域名/IP，一般情况下无需配置 ##########################
+node:
+    hostName: 四川移动域名拨测系统
+    ip: 
+
+
+
+
+
+
+
+
+
+
+
+
+
